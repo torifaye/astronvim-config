@@ -24,4 +24,5 @@ return {
         },
         ["<leader>gg"] = {"<cmd>Neogit kind=vsplit<cr>", desc = "Open Neogit"}
     }
+
 }

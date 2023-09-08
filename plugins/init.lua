@@ -1,5 +1,10 @@
 return {
     {
+        'scalameta/nvim-metals',
+        lazy = false,
+        config = function() require('user.plugins.config.metals') end,
+        dependencies = {'nvim-lua/plenary.nvim'}
+    }, {
         'NeogitOrg/neogit',
         dependencies = 'nvim-lua/plenary.nvim',
         lazy = false,
@@ -9,7 +14,20 @@ return {
                 integrations = {diffview = true}
             }
         end
-    }, 'sindrets/diffview.nvim', {
+    }, 'sindrets/diffview.nvim', 'mfussenegger/nvim-jdtls', {
+        'kiyoon/jupynium.nvim',
+        build = "pip3 install --user .",
+        lazy = false,
+        config = function()
+            vim.keymap.set("n", "<leader>jq", ":JupyniumStopSync<CR>",
+                           {desc = "Stop Jupynium Sync"})
+            vim.keymap.set("n", "<leader>jw", ":JupyniumStartSync<CR>",
+                           {desc = "Start Jupynium Sync"})
+            vim.keymap.set("n", "<leader>ja",
+                           ":JupyniumStartAndAttachToServerInTerminal<CR>",
+                           {desc = "Start Jupynium Process"})
+        end
+    }, 'stevearc/dressing.nvim', {
         "catppuccin/nvim",
         lazy = false,
         priority = 150,
